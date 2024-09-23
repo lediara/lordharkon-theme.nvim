@@ -12,7 +12,7 @@ function M.load(opts)
   if opts then
     require("lordharkon.config").extend(opts)
   end
-  util.load(config.setup())
+  util.load(theme.setup())
 end
 
 M.setup = config.setup
