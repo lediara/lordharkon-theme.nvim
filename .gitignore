@@ -1,4 +1,0 @@
-# .gitignore
-*.swp        # Ignore Vim swap files
-*.DS_Store   # Ignore macOS system files
-node_modules # Ignore node_modules (if you're using npm)
