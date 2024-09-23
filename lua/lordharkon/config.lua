@@ -1,30 +1,21 @@
 local M = {}
 
--- Default options
-local defaults = {
-    style = "default",
-    terminal_colors = true,
+M.options = {
+    style = "dark",
+    use_background = true,
 }
 
--- Holds the merged options
-M.options = {}
-
--- Utility function to merge options
-local function merge_options(base, new_options)
-    return vim.tbl_deep_extend("force", {}, base, new_options or {})
+function M.get_theme()
+    local theme = require('lordharkon.theme') -- Assuming your theme logic is in 'theme.lua'
+    return theme
 end
 
--- Setup function to initialize options with defaults
-function M.setup(options)
-    M.options = merge_options(defaults, options)
+function M.setup(opts)
+    M.options = vim.tbl_deep_extend("force", M.options, opts or {})
 end
 
--- Extend function to modify or override existing options
-function M.extend(options)
-    if not options or type(options) ~= "table" then
-        error("Invalid options passed to extend. Must be a table.")
-    end
-    M.options = merge_options(M.options, options)
+function M.extend(opts)
+    M.options = vim.tbl_deep_extend("force", M.options, opts or {})
 end
 
 return M
